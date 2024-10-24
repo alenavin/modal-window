@@ -11,7 +11,6 @@ const closeModal = function () {
 };
 
 const openModal = function () {
-  console.log('Button clicked');
   modal.classList.remove('hidden'); // берем модальное окно, прочитывает ссписок его классов и удалям оттуда hidden
   overlay.classList.remove('hidden');
 };
@@ -23,3 +22,11 @@ for (let i = 0; i < btnsOpen.length; i++) {
 btnClose.addEventListener('click', closeModal);
 
 overlay.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', function (event) {
+  // добавляется события нажатия любой кнопки на клаве
+  console.log(event.key); // в параметр (эвент.key) сохранятеся значение кнопки
+  if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
+  }
+});
